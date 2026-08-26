@@ -7,7 +7,7 @@ using ImaxWatcher.Options;
 
 namespace ImaxWatcher.Notifications;
 
-public sealed class GmailNotifier(EmailOptions options) : INotifier
+public sealed class EmailNotifier(EmailOptions options) : INotifier
 {
     private readonly EmailOptions _options = options;
 

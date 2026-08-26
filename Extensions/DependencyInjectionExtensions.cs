@@ -16,7 +16,7 @@ internal static class DependencyInjectionExtensions
     {
         services
             .AddSingleton<IShowcaseReader, ShowcaseReader>()
-            .AddSingleton<INotifier, GmailNotifier>()
+            .AddSingleton<INotifier, EmailNotifier>()
             .AddSingleton<NotificationService>()
             .AddSingleton<WatcherRunner>();
 

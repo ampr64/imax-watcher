@@ -183,8 +183,9 @@ Viene habilitado por default. Usá una **contraseña de aplicación** de Google,
 tu contraseña normal.
 
 ```powershell
-dotnet user-secrets set "Email:From" "vos@gmail.com"
-dotnet user-secrets set "Email:To" "vos@gmail.com,otra-persona@gmail.com"
+dotnet user-secrets set "Email:From" "tu-mail@gmail.com"
+dotnet user-secrets set "Email:FromName" "Tu Nombre"
+dotnet user-secrets set "Email:To" "tu-mail@gmail.com,otra-persona@gmail.com"
 dotnet user-secrets set "Email:Password" "TU_APP_PASSWORD"
 ```
 
@@ -285,11 +286,11 @@ que desde afuera se ven igual.
 
 ```
 Program.cs                     Composición: configuración, logging, DI, ciclo de vida
-Extensions/                    Registro de servicios y formateo de mensajes
+Extensions/                    Métodos de extensión utilitarios
 Models/                        Showing, WatchAlert
-Options/                       Configuración tipada
+Options/                       Configuraciones tipadas
   Validation/                  Atributos condicionales (RequiredIf, EmailAddressIf)
-Notifications/                 INotifier + Gmail, Telegram, Twilio + orquestador
+Notifications/                 Servicios de notiicaciones (SMTP, Telegram, WhatsApp)
 Services/
   ShowcaseReader.cs            Automatización del navegador (Playwright)
   WatcherRunner.cs             Ciclo de polling, dedupe y reintentos
@@ -326,12 +327,3 @@ directamente, así que se corre apuntándolo por path.
 | `No pude interpretar N opciones de día` | Cambió el formato de fecha del sitio. Hay que ampliar `ShowcaseParsing.TryParseDate` |
 | `El navegador dejó de responder` | Chromium se cayó. Es normal y se recupera solo |
 | Nunca avisa | Verificá con `--once` que lee bien, y con `--test-notifications` que los canales andan |
-
----
-
-## Nota sobre idiomas
-
-El código, los comentarios y los nombres de tests están en inglés. La salida de
-consola, los logs y el texto de las notificaciones están en español a propósito,
-porque son lo que se lee cuando el watcher está corriendo. Este README también
-está en español.
