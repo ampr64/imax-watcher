@@ -21,6 +21,8 @@ public sealed record EmailOptions
     [EmailAddressIf(nameof(Enabled), ErrorMessage = "Email:From no es una dirección válida.")]
     public required string From { get; init; }
 
+    public string? FromName { get; init; }
+
     [RequiredIf(nameof(Enabled), ErrorMessage = "Email:To es obligatorio cuando Email:Enabled=true.")]
     [EmailAddressIf(nameof(Enabled), ErrorMessage = "Email:To tiene una dirección inválida.")]
     public required string To { get; init; }

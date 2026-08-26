@@ -17,7 +17,10 @@ public sealed class EmailNotifier(EmailOptions options) : INotifier
     public async Task SendAsync(WatchAlert alert, CancellationToken cancellationToken)
     {
         var message = new MimeMessage();
-        message.From.Add(MailboxAddress.Parse(_options.From));
+        
+        var from = MailboxAddress.Parse(_options.From);        
+        from.Name = _options.FromName;
+        message.From.Add(from);
 
         foreach (var address in _options.Recipients)
             message.To.Add(MailboxAddress.Parse(address));

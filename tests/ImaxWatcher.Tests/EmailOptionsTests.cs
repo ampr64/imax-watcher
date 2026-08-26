@@ -16,7 +16,7 @@ public class EmailOptionsRecipientsTests
     [Fact]
     public void TreatsAnEmptyToAsNoRecipients()
     {
-        var options = NewOptions(to: "");
+        var options = NewOptions(to: string.Empty);
 
         Assert.Empty(options.Recipients);
     }
@@ -35,7 +35,7 @@ public class EmailOptionsValidationTests
     [Fact]
     public void FailsWhenEnabledAndToIsEmpty()
     {
-        Assert.False(Validate(enabled: true, to: ""));
+        Assert.False(Validate(enabled: true, to: string.Empty));
     }
 
     [Fact]
@@ -53,7 +53,7 @@ public class EmailOptionsValidationTests
     [Fact]
     public void PassesWhenDisabledAndToIsEmpty()
     {
-        Assert.True(Validate(enabled: false, to: ""));
+        Assert.True(Validate(enabled: false, to: string.Empty));
     }
 
     private static bool Validate(bool enabled, string to)
